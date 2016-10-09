@@ -2,6 +2,9 @@
 H235-SECURITY-MESSAGES DEFINITIONS AUTOMATIC TAGS ::=
 BEGIN
 
+IMPORTS
+  NonStandardParameter FROM MULTIMEDIA-SYSTEM-CONTROL;
+
 -- EXPORTS All
 ChallengeString ::= OCTET STRING(SIZE (8..128))
 
@@ -17,10 +20,12 @@ Identifier ::= BMPString(SIZE (1..128))
 
 KeyMaterial ::= BIT STRING(SIZE (1..2048))
 
-NonStandardParameter ::= SEQUENCE {
-  nonStandardIdentifier  OBJECT IDENTIFIER,
-  data                   OCTET STRING
-}
+-- Import from MULTIMEDIA-SYSTEM-CONTROL
+--
+-- NonStandardParameter ::= SEQUENCE {
+--  nonStandardIdentifier  OBJECT IDENTIFIER,
+--  data                   OCTET STRING
+-- }
 
 -- if local octet representations of these bit strings are used they shall 
 -- utilize standard Network Octet ordering (e.g., Big Endian)

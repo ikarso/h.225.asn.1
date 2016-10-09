@@ -3,6 +3,10 @@ MULTIMEDIA-SYSTEM-CONTROL {itu-t(0) recommendation(0) h(8) h245(245)
   version(0) 15 multimedia-system-control(0)} DEFINITIONS AUTOMATIC TAGS ::=
 BEGIN
 
+IMPORTS
+  NonStandardMessage, TransportAddress FROM H323-MESSAGES
+  Password, IV8, IV16, Params FROM H235-SECURITY-MESSAGES;
+
 -- Export all symbols
 -- =======================================================================
 -- Top level Messages
@@ -132,9 +136,10 @@ GenericInformation ::= GenericMessage
 -- =============================================================================
 -- Non-standard Message definitions
 -- =============================================================================
-NonStandardMessage ::= SEQUENCE {nonStandardData  NonStandardParameter,
-                                 ...
-}
+-- import from H323-MESSAGES
+-- NonStandardMessage ::= SEQUENCE {nonStandardData  NonStandardParameter,
+--                                 ...
+-- }
 
 NonStandardParameter ::= SEQUENCE {
   nonStandardIdentifier  NonStandardIdentifier,
@@ -1774,11 +1779,12 @@ FECData ::= CHOICE {
   ...
 }
 
-TransportAddress ::= CHOICE {
-  unicastAddress    UnicastAddress,
-  multicastAddress  MulticastAddress,
-  ...
-}
+-- import from H323-MESSAGES
+-- TransportAddress ::= CHOICE {
+--  unicastAddress    UnicastAddress,
+--  multicastAddress  MulticastAddress,
+--  ...
+-- }
 
 UnicastAddress ::= CHOICE {
   iPAddress
@@ -2670,7 +2676,8 @@ TerminalID ::= OCTET STRING(SIZE (1..128)) -- as per H.230
 
 ConferenceID ::= OCTET STRING(SIZE (1..32))
 
-Password ::= OCTET STRING(SIZE (1..32))
+-- import from H235-SECURITY-MESSAGES
+-- Password ::= OCTET STRING(SIZE (1..32))
 
 RequestAllTerminalIDsResponse ::= SEQUENCE {
   terminalInformation  SEQUENCE OF TerminalInformation,
@@ -3299,22 +3306,29 @@ NewATMVCIndication ::= SEQUENCE {
 -- =============================================================================
 -- Indication Message: User input
 -- =============================================================================
-IV8 ::= OCTET STRING(SIZE (8))
 
+-- import from H235-SECURITY-MESSAGES
+-- IV8 ::= OCTET STRING(SIZE (8))
+
+-- import from H235-SECURITY-MESSAGES
 -- initial value for 
 -- 64-bit block ciphers
-IV16 ::= OCTET STRING(SIZE (16))
+-- IV16 ::= OCTET STRING(SIZE (16))
 
+-- import from H235-SECURITY-MESSAGES
 -- initial value for 
 -- 128-bit block ciphers
-Params ::= SEQUENCE {
-  iv8   IV8 OPTIONAL, -- 8-octet initialization vector
-  iv16  IV16 OPTIONAL, -- 16-octet initialization vector
-  iv    OCTET STRING OPTIONAL, -- arbitrary length
+-- Params ::= SEQUENCE {
+--  iv8   IV8 OPTIONAL,
+     -- 8-octet initialization vector
+--  iv16  IV16 OPTIONAL,
+     -- 16-octet initialization vector
+--  iv    OCTET STRING OPTIONAL,
+     -- arbitrary length
   
   -- initialization vector
-  ...
-}
+--  ...
+-- }
 
 UserInputIndication ::= CHOICE {
   nonStandard                 NonStandardParameter,

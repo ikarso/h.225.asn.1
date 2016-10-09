@@ -8,7 +8,8 @@ IMPORTS
     Password, EncodedPwdCertToken, ClearToken, CryptoToken,
     AuthenticationMechanism
     FROM H235-SECURITY-MESSAGES
-  DataProtocolCapability, T38FaxProfile, QOSCapability
+  DataProtocolCapability, T38FaxProfile, QOSCapability,
+    NonStandardParameter, NonStandardIdentifier
     FROM MULTIMEDIA-SYSTEM-CONTROL {itu-t(0) recommendation(0) h(8) h245(245)
       version(0) 15 multimedia-system-control(0)};
 
@@ -618,16 +619,17 @@ TunnelledProtocolAlternateIdentifier ::= SEQUENCE {
   ...
 }
 
-NonStandardParameter ::= SEQUENCE {
-  nonStandardIdentifier  NonStandardIdentifier,
-  data                   OCTET STRING
-}
-
-NonStandardIdentifier ::= CHOICE {
-  object           OBJECT IDENTIFIER,
-  h221NonStandard  H221NonStandard,
-  ...
-}
+-- Import from MULTIMEDIA-SYSTEM-CONTROL
+-- NonStandardParameter ::= SEQUENCE {
+--   nonStandardIdentifier  NonStandardIdentifier,
+--   data                   OCTET STRING
+-- }
+--
+-- NonStandardIdentifier ::= CHOICE {
+--  object           OBJECT IDENTIFIER,
+--  h221NonStandard  H221NonStandard,
+--  ...
+--}
 
 AliasAddress ::= CHOICE {
   dialledDigits  IA5String(SIZE (1..128))(FROM ("0123456789#*,")),
