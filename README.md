@@ -8,6 +8,7 @@ $ /path/to/asn1c -fcompound-names -gen-PER -pdu=H323-UserInformation ../*.asn
 $ make -f Makefile.am.sample  
 $ ./progname -iaper /path/to/h.323.rtp_example/h.225/cs.setup/H323-MESSAGES/H323-MESSAGES.hex
 
+```xml
   <H323-UserInformation>  
     <h323-uu-pdu>  
         <h323-message-body>  
@@ -66,9 +67,10 @@ $ ./progname -iaper /path/to/h.323.rtp_example/h.225/cs.setup/H323-MESSAGES/H323
         <h245Tunnelling><false/></h245Tunnelling>  
     </h323-uu-pdu>  
   </H323-UserInformation>  
-
+```
 
 $ ./progname -iaper /path/to/h.323.rtp_example/h.225/cs.connect/H323-MESSAGES/H323-MESSAGES.hex 
+```xml
 <H323-UserInformation>
     <h323-uu-pdu>
         <h323-message-body>
@@ -106,3 +108,4 @@ $ ./progname -iaper /path/to/h.323.rtp_example/h.225/cs.connect/H323-MESSAGES/H3
         <h245Tunnelling><false/></h245Tunnelling>
     </h323-uu-pdu>
   </H323-UserInformation>
+```
